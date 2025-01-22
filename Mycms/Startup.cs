@@ -2,6 +2,7 @@ using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
+using EPiServer.Web;
 using EPiServer.Web.Routing;
 
 namespace Mycms;
@@ -29,6 +30,14 @@ public class Startup
             .AddCms()
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>();
+
+        services.Configure<DisplayOptions>(options =>
+        {
+            options.Add("col-3", "col-3", "", "epi-icon__layout--full");
+            options.Add("col-6", "col-6", "", "epi-icon__layout--wide");
+            options.Add("col-9", "col-9", "", "epi-icon__layout--narrow");
+            options.Add("col-12", "col-12","", "epi-icon__layout--narrow");
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

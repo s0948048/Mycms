@@ -1,12 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Mycms.Models.Blocks;
+﻿using Mycms.Models.Blocks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Mycms.Models.Pages
 {
     [ContentType(
-        DisplayName = "General page.",
-        GUID = "89c08b3a-4413-41cf-a53d-c71851a190b6")]
-    public class GeneralPage:AbstractPage
+        DisplayName ="News Lists Page.",
+        GroupName = "Normal",
+        GUID = "f5813127-207d-47e5-8d0e-5d96d9e3ca6b")]
+    public class NewsPage:AbstractPage
     {
         [Display(
             Name = "headline text.",
@@ -30,7 +31,7 @@ namespace Mycms.Models.Pages
             Name = "Bottom content area.",
             GroupName = SystemTabNames.Content,
             Order = 24)]
-        [AllowedTypes([typeof(SectionMediaBlock),typeof(LinkGridBlock)])]
-        public virtual ContentArea? BottomContentArea { get; set; }
+        [AllowedTypes([typeof(NewsItemPage)])]
+        public virtual ContentArea? NewListArea { get; set; }
     }
 }
